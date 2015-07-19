@@ -16,6 +16,15 @@ Materiales
 
 Instrucciones
 ===================
+## Crear Cuenta en Pusher.com
+Éste es el paso más simple, solo entramos a [https://pusher.com/signup](https://pusher.com/signup) ingresan su email y una contraseña o loguearse con alguna cuenta de github o google. después de eso ya podemos crear apps. Luego de eso los redirecciona a un dashboard y solo deben presionar el botón ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/newapp.png "new app")
+se abre un modal y le damos un nombre y checkeamos *Enable client event* y presionamos *Create App*
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/newapp_conf.png "configure new app")
+ya tenemos una app y podemos comenzar a utilizar el servicio. Nos entrega unos ejemplos de Cliente servidor, pero a nosotros solo nos importará la APP KEY por ejemplo
+```
+key = '856c493d6d461226XXX'
+```
+
 ## Actualizar firmware del ESP8266
 Lo primero es actualizar el firmware, lo actualizaremos a la versión [AI-v0.9.5.0 AT Firmware.bin](https://github.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/raw/master/firmware%20esp8266/AI-v0.9.5.0%20AT%20Firmware.bin). Después de probar muchos firmwares es el unico que me funcionó para el ATTiny85 configurado a 4800 bauds.
 Primero se sube un sketch vacio al Arduino UNO
@@ -95,22 +104,11 @@ Ahora ya podemos comenzar a escribir comandos **AT**, lo primero que podemos esc
 
 ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/firmware%20esp8266/monitor_AT.png "AT")
 
-para configurar a 4800 bauds debemos escribir **AT+CIOBAUD=4800** que debe responder **OK** 
-
+para configurar a 4800 bauds debemos escribir **AT+CIOBAUD=4800** que debería responder **OK** aunque ya no se nos verá el texto porque ahora ya no funciona a 9600 bauds. Para volver a ver texto deben subir nuevamente el sketch anterior pero pasando 4800 al método begin
+```arduino
+BT1.begin(4800);
 ```
-AT+CIOBAUD=4800
-
-OK
-
-```
-
 Ahora ya hemos terminado con la configuración del modulo wifi, aunque si quieren investigar mas [acá dejo un pdf](https://github.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/raw/master/firmware%20esp8266/ESP8266%20AT%20Command%20Set.pdf) con todos los comandos disponibles que usaremos en los siguientes pasos.
-
-
-
-
-
-
 
 
 
