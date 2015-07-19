@@ -16,9 +16,20 @@ Materiales
 
 Instrucciones
 ===================
-# Actualizar firmware del ESP8266
+## Actualizar firmware del ESP8266
 Lo primero es actualizar el firmware, lo actualizaremos a la versión [AI-v0.9.5.0 AT Firmware.bin](https://github.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/raw/master/firmware%20esp8266/AI-v0.9.5.0%20AT%20Firmware.bin). Después de probar muchos firmwares es el unico que me funcionó para el ATTiny85 configurado a 4800 bauds.
-Para subir el archivos necesitamos conectar el ESP8266 al Arduino UNO como se ve en el siguiente diagrama
+Primero se sube un sketch vacio al Arduino UNO
+
+```arduino
+void setup() {
+  // put your setup code here, to run once:
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+}
+```
+
+Después necesitamos conectar el ESP8266 al Arduino UNO como se ve en el siguiente diagrama
 
 ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/firmware%20esp8266/ESP8266_Pines.jpg "ESP8266")
 ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/firmware%20esp8266/ESP8266-Connections-Arduino-UNO.png "Conexión")
@@ -41,3 +52,66 @@ Leaving... Failed to leave Flash mode
 ```
 
 Al terminar de actualizar el firmware deben desconectar del 8266 el pin GPIO0 
+
+## Configurar ESP8266
+Despues de tener el nuevo firmware vamos a cambiar un parametro del modulo wifi, debemos dejar el baudaje de comunicación a 4800, por defecto viene con 9600. Para ello nuevamente usaremos Arduino UNO, necesitamos subir el siguiente sketch:
+
+```arduino
+#include <SoftwareSerial.h>
+SoftwareSerial BT1(3, 2); // RX | TX
+void setup() {  
+	Serial.begin(9600);
+    BT1.begin(9600);
+}
+
+void loop() {
+	String B= "." ;
+	if (BT1.available()) { 
+		char c = BT1.read() ;
+		Serial.print(c);
+	}
+	if (Serial.available()){
+		char c = Serial.read();
+		BT1.print(c);
+	}
+}
+```
+
+y conectaremos el modulo ESP8266 de la siguiente forma:
+
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/firmware%20esp8266/ESP8266-Configure-AT.png "Configurando con comandos AT")
+
+Ahora en el programa Arduino vamos a *Herramientas* -> *Monitor Serie* , Seleccionar *Ambos NL & CR* y *9600 baudio*
+
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/firmware%20esp8266/monitor_cfg.png "Configurando Monitor Serie")
+
+
+y podremos ver algo como lo siguiente 
+
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/firmware%20esp8266/monitor.png "Monitor Serie")
+
+
+Ahora ya podemos comenzar a escribir comandos **AT**, lo primero que podemos escribir es el Comando **AT** que debería responder **OK** 
+
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/firmware%20esp8266/monitor_AT.png "AT")
+
+para configurar a 4800 bauds debemos escribir **AT+CIOBAUD=4800** que debe responder **OK** 
+
+```
+AT+CIOBAUD=4800
+
+OK
+
+```
+
+Ahora ya hemos terminado con la configuración del modulo wifi, aunque si quieren investigar mas [acá dejo un pdf](https://github.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/raw/master/firmware%20esp8266/ESP8266%20AT%20Command%20Set.pdf) con todos los comandos disponibles que usaremos en los siguientes pasos.
+
+
+
+
+
+
+
+
+
+
