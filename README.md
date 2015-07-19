@@ -17,13 +17,17 @@ Materiales
 Instrucciones
 ===================
 ## Crear Cuenta en Pusher.com
-Pusher es un servicio que provee de servidores websocket para utilizarlo como uno quiera. Esto funciona con tres actores servicio (pusher) , servidor (envía eventos) y cliente (se conecta al servicio escucha y recibe eventos)
+Pusher es un servicio que provee de servidores websocket para utilizarlo como uno quiera. Esto funciona con tres actores:
+- servicio (pusher)
+- servidor (envía eventos)
+- cliente (se conecta al servicio escucha y recibe eventos)
 
-![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/hero_howitworks.png "cómo funciona"){: style="text-align:center"}
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/hero_howitworks.png "cómo funciona")
 
 De la imagen anterior debemos entender que ATTiny85 funcionará como cliente reemplazando a *Browsers*
 
-Conociendo eso entramos a [https://pusher.com/signup](https://pusher.com/signup) ingresan su email y una contraseña o loguearse con alguna cuenta de github o google. después de eso ya podemos crear apps. Luego de eso los redirecciona a un dashboard y solo deben presionar el botón 
+Conociendo eso entramos a [https://pusher.com/signup](https://pusher.com/signup) ingresan su email - contraseña o loguearse con alguna cuenta de github o google y confirmar cuenta. Después de eso ya podemos crear apps. Luego de eso los redirecciona a un dashboard y solo deben presionar el botón:
+
 ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/newapp.png "new app")
 
 se abre un modal y le damos un nombre y checkeamos *Enable client event* y presionamos *Create App*
@@ -121,5 +125,52 @@ BT1.begin(4800);
 Ahora ya hemos terminado con la configuración del modulo wifi, aunque si quieren investigar mas [acá dejo un pdf](https://github.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/raw/master/firmware%20esp8266/ESP8266%20AT%20Command%20Set.pdf) con todos los comandos disponibles que usaremos en los siguientes pasos.
 
 
+## Subir código al ATTiny85
+Para subir el código al integrado Se puede usar Arduino UNO o un ISP yo utilizaré USBTinyISP donde debemos conectar el Attiny85 al ISP de la siguiente forma:
 
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/6-pin-isp-cable.png "USBTinyISP") ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/attiny85.png "ATTiny85")
+
+Ya conectado debemos agregar ATTiny a las placas del programa Arduino, yo estoy usando la version 1.6.5 que es sencillo, sólo deben ir a *Archivo* -> *Preferencias* donde encontraremos el siguiente campo
+
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/additional-boards-manager-urls-blank.png "Agregar placa")
+
+Ahí agregamos éste link que contiene la configuracion del package que contiene las placas ATTiny
+```
+https://raw.githubusercontent.com/damellis/attiny/ide-1.6.x-boards-manager/package_damellis_attiny_index.json
+```
+click en OK para guardar la configuración. Ir a *Herramientas* -> *Placa* -> *Boards Manager...* buscar ATtiny y presionar el botón *Install*
+
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/boards-manager-install.png "Install board ATTiny")
+
+Ahora ya puedes utilizar ATTiny en Arduino. Ahora configuraremos Arduino Anda a *Herramientas* 
+- **Placa** y selecciona *ATtiny*
+- **Procesador** ATTiny85
+- **Clock** 8 MHz (internal)
+- **Programador** USBtinyISP
+
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/attiny_cfg.png "board ATTiny")
+
+
+Importante es Presionar **Quemar Bootloader**, cuando no hice eso el programa andaba lento
+
+
+Ahora solo deben configurar [ATTiny85WebSocketClient.ino](https://github.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/blob/master/attiny85/ATTiny85WebSocketClient.ino) agregando la información de su red wifi y la Key de pusher que obtuvimos en el Paso 1
+
+```arduino
+#define SSID        "WifiAP"
+#define PASS        "password"
+#define PUSHER_KEY  "xxxxxxxxxxxxxxx"
+```
+El codigo se conecta como Cliente a Pusher esperando eventos, los eventos que definí son los siguientes:
+
+- **ledAOn** 
+- **ledAOff**
+- **ledBOn**
+- **ledBOff**
+
+esos eventos prenderán o apagarán 2 leds. A continuación dejo el diagrama de como deben ir conectadas las leds y el módulo ESP8266 al ATTiny85
+
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/ATtiny85-ESP8266-2Led.png "cableado")
+
+Ahora solo debemos subir el código al ATTint85 y esperar que conecte
 

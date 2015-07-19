@@ -26,6 +26,10 @@ const char STR_APNAME[] PROGMEM     = "+CWJAP:\"";
 const char SUBSCRIBE_JSON[] PROGMEM = "{\"event\":\"pusher:subscribe\",\"data\":{\"channel\":\"test_channel\"}}";
 const char PONG_JSON[] PROGMEM      = "{\"event\":\"pusher:pong\",\"data\":{}}";
 const char ping[] PROGMEM           = "ping";
+
+/*
+*   EVENTOS PUSHER.COM
+*/
 const char ledAOn[] PROGMEM         = "ledAOn";
 const char ledAOff[] PROGMEM        = "ledAOff";
 const char ledBOn[] PROGMEM         = "ledBOn";
