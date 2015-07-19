@@ -17,9 +17,19 @@ Materiales
 Instrucciones
 ===================
 ## Crear Cuenta en Pusher.com
-Éste es el paso más simple, solo entramos a [https://pusher.com/signup](https://pusher.com/signup) ingresan su email y una contraseña o loguearse con alguna cuenta de github o google. después de eso ya podemos crear apps. Luego de eso los redirecciona a un dashboard y solo deben presionar el botón ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/newapp.png "new app")
+Pusher es un servicio que provee de servidores websocket para utilizarlo como uno quiera. Esto funciona con tres actores servicio (pusher) , servidor (envía eventos) y cliente (se conecta al servicio escucha y recibe eventos)
+
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/hero_howitworks.png "cómo funciona")
+
+De la imagen anterior debemos entender que ATTiny85 funcionará como cliente reemplazando a *Browsers*
+
+Conociendo eso entramos a [https://pusher.com/signup](https://pusher.com/signup) ingresan su email y una contraseña o loguearse con alguna cuenta de github o google. después de eso ya podemos crear apps. Luego de eso los redirecciona a un dashboard y solo deben presionar el botón 
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/newapp.png "new app")
+
 se abre un modal y le damos un nombre y checkeamos *Enable client event* y presionamos *Create App*
+
 ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/newapp_conf.png "configure new app")
+
 ya tenemos una app y podemos comenzar a utilizar el servicio. Nos entrega unos ejemplos de Cliente servidor, pero a nosotros solo nos importará la APP KEY por ejemplo
 ```
 key = '856c493d6d461226XXX'
