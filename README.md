@@ -161,7 +161,7 @@ Ahora solo deben configurar [ATTiny85WebSocketClient.ino](https://github.com/Est
 #define PASS        "password"
 #define PUSHER_KEY  "xxxxxxxxxxxxxxx"
 ```
-El codigo se conecta como Cliente a Pusher esperando eventos, los eventos que definí son los siguientes:
+El codigo se conecta como Cliente a Pusher esperando eventos en el channel **test_channel**, los eventos que definí son los siguientes:
 
 - **ledAOn** 
 - **ledAOff**
