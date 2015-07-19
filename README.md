@@ -17,13 +17,13 @@ Materiales
 Instrucciones
 ===================
 # Actualizar firmware del ESP8266
-Lo primero es actualizar el firmware, lo actualizaremos a la versión [AI-v0.9.5.0 AT Firmware.bin](https://github.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/firmware%20esp8266/AI-v0.9.5.0%20AT%20Firmware.bin). Después de probar muchos firmwares es el unico que me funcionó para el ATTiny85 configurado a 4800 bauds.
+Lo primero es actualizar el firmware, lo actualizaremos a la versión [AI-v0.9.5.0 AT Firmware.bin](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/firmware%20esp8266/AI-v0.9.5.0%20AT%20Firmware.bin). Después de probar muchos firmwares es el unico que me funcionó para el ATTiny85 configurado a 4800 bauds.
 Para subir el archivos necesitamos conectar el ESP8266 al Arduino UNO como se ve en el siguiente diagrama
 
 ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/firmware%20esp8266/ESP8266_Pines.jpg "ESP8266")
 ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/firmware%20esp8266/ESP8266-Connections-Arduino-UNO.png "Conexión")
 
-Después de conectar utilizaremos el programa [esp8266_flasher.exe](https://github.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/firmware%20esp8266/esp8266_flasher.exe) Para windows o [esptool.py](https://github.com/themadinventor/esptool) para otros sistemas operativos.
+Después de conectar utilizaremos el programa [esp8266_flasher.exe](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/firmware%20esp8266/esp8266_flasher.exe) Para windows o [esptool.py](https://github.com/themadinventor/esptool) para otros sistemas operativos.
 
 ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/firmware%20esp8266/FO8YOLOIATH773M.LARGE.jpg "Programa esp8266_flasher")
 
