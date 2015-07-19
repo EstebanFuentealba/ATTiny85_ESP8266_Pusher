@@ -19,7 +19,7 @@ Instrucciones
 ## Crear Cuenta en Pusher.com
 Pusher es un servicio que provee de servidores websocket para utilizarlo como uno quiera. Esto funciona con tres actores servicio (pusher) , servidor (envía eventos) y cliente (se conecta al servicio escucha y recibe eventos)
 
-![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/hero_howitworks.png "cómo funciona")
+![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/hero_howitworks.png "cómo funciona"){: style="text-align:center"}
 
 De la imagen anterior debemos entender que ATTiny85 funcionará como cliente reemplazando a *Browsers*
 
