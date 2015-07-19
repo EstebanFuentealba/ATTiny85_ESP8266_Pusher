@@ -1,5 +1,7 @@
 #include <SoftwareSerial.h>
-
+/*
+*   efuentealba@json.cl
+*/
 //CONFIGURE
 #define SSID        "WifiAP"
 #define PASS        "password"
