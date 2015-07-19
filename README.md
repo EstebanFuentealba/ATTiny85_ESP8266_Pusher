@@ -172,5 +172,6 @@ esos eventos prenderán o apagarán 2 leds. A continuación dejo el diagrama de 
 
 ![alt text](https://raw.githubusercontent.com/EstebanFuentealba/ATTiny85_ESP8266_Pusher/master/images/ATtiny85-ESP8266-2Led.png "cableado")
 
-Ahora solo debemos subir el código al ATTint85 y esperar que conecte
+Ahora solo debemos subir el código al ATTint85 y esperar que conecte.
+
 
